@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Models\Curso;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CursoController;
 
@@ -20,7 +19,8 @@ Route::middleware('auth')->group(function () {
 
     //Rutas de cursos
     Route::get('/cursos', [CursoController::class, 'index'])->name('cursos.index');
-
+    Route::post('/cursos', [CursoController::class, 'store'])->name('cursos.store');
+    Route::get('/cursos/create', [CursoController::class, 'create'])->name('cursos.create');
 });
 
 require __DIR__.'/auth.php';

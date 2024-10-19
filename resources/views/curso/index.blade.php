@@ -9,9 +9,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <table class="table">
+                <a href="{{ route('cursos.create') }}"class="bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded ml-2">Add</a>
+                    <table class="table"> 
                         <thead>
-<!--                         id	título	descripción	duración	precio	categoría	created_at	updated_at	 -->
 
                             <tr>
                                 <th scope="col">Id</th>
