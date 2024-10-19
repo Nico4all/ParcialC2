@@ -32,6 +32,9 @@
                                 <td>{{ $curso->precio }}</td>
                                 <td>{{ $curso->categoría }}</td>
                                 <td>
+                                    <a href="{{ route('cursos.edit', $curso->id) }}"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        Edit </a></li>
                                     <form action="{{ route('cursos.destroy', $curso->id) }}" method="POST" style="display: inline-block">
                                         @csrf
                                         @method('DELETE')
