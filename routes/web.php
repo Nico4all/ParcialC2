@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\EstudianteController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,6 +25,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/cursos/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy');
     Route::put('/cursos/{curso}', [CursoController::class, 'update'])->name('cursos.update');
     Route::get('/cursos/{curso}/edit', [CursoController::class, 'edit'])->name('cursos.edit');
+
+    //Rutas de Estudiantes
+    Route::get('/estudiantes', [EstudianteController::class, 'index'])->name('estudiantes.index');
+
 });
 
 require __DIR__ . '/auth.php';
