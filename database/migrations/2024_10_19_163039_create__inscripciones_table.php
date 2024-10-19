@@ -8,13 +8,18 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('_inscripciones', function (Blueprint $table) {
+        Schema::create('inscripciones', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('curso_id')->constrained('cursos')->onDelete('cascade');
-            $table->foreignId('instructor_id')->constrained('instructores')->onDelete('cascade');
-            $table->foreignId('estudiante_id')->constrained('estudiantes')->onDelete('cascade');
+            $table->unsignedBigInteger('curso_id');  // asegúrate que sea unsignedBigInteger
+            $table->unsignedBigInteger('instructor_id');  // idem
+            $table->unsignedBigInteger('estudiante_id');  // idem
             $table->date('fecha_inscripción');
             $table->timestamps();
+
+            // Definición de claves foráneas
+            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('cascade');
+            $table->foreign('instructor_id')->references('id')->on('instructores')->onDelete('cascade');
+            $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onDelete('cascade');
         });
     }
 
