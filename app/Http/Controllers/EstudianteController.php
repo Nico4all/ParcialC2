@@ -22,7 +22,8 @@ class EstudianteController extends Controller
      */
     public function create()
     {
-        //
+        $estudiantes = DB::table('estudiantes');
+        return view('estudiante.new', ['estudiantes' => $estudiantes]);
     }
 
     /**
@@ -30,7 +31,16 @@ class EstudianteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $estudiante = new Estudiante();   
+        $estudiante->nombre = $request->nombre;
+        $estudiante->apellido = $request->apellido;
+        $estudiante->email = $request->email;
+        $estudiante->nivel_educativo = $request->nivel_educativo; 
+        $estudiante->save();
+
+        $estudiantes = DB::table('estudiantes')->get();
+
+        return redirect()->route('estudiantes.index')->with('success', 'estudiante creado exitosamente.');
     }
 
     /**
@@ -62,6 +72,8 @@ class EstudianteController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $estudiante = Estudiante::find($id);
+        $estudiante->delete();
+        return redirect()->route('estudiantes.index')->with('success', 'estudiante eliminado exitosamente.');
     }
 }

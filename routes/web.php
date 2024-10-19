@@ -28,6 +28,9 @@ Route::middleware('auth')->group(function () {
 
     //Rutas de Estudiantes
     Route::get('/estudiantes', [EstudianteController::class, 'index'])->name('estudiantes.index');
+    Route::post('/estudiantes', [EstudianteController::class, 'store'])->name('estudiantes.store');
+    Route::get('/estudiantes/create', [EstudianteController::class, 'create'])->name('estudiantes.create');
+    Route::delete('/estudiantes/{estudiante}', [EstudianteController::class, 'destroy'])->name('estudiantes.destroy');
 
 });
 
