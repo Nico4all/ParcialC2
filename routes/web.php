@@ -21,6 +21,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/cursos', [CursoController::class, 'index'])->name('cursos.index');
     Route::post('/cursos', [CursoController::class, 'store'])->name('cursos.store');
     Route::get('/cursos/create', [CursoController::class, 'create'])->name('cursos.create');
+    Route::delete('/cursos/{curso}', [CursoController::class, 'destroy'])->name('cursos.destroy');
+
 });
 
 require __DIR__.'/auth.php';
