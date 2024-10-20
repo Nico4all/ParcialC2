@@ -32,6 +32,9 @@
                                 <td>{{ $estudiante->email }}</td>
                                 <td>{{ $estudiante->nivel_educativo }}</td>
                                 <td>
+                                    <a href="{{ route('estudiantes.edit', $estudiante->id) }}"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        Edit </a></li>
                                     <form action="{{ route('estudiantes.destroy', $estudiante->id) }}" method="POST" style="display: inline-block">
                                         @csrf
                                         @method('DELETE')
