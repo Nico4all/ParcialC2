@@ -56,7 +56,9 @@ class InstructorController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $instructor = Instructor::find($id);
+        $instructores = DB::table('instructores')->get();
+        return view('instructor.edit', compact('instructor'));
     }
 
     /**
@@ -64,7 +66,17 @@ class InstructorController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $instructor = Instructor::find($id);
+
+        $instructor->nombre = $request->nombre;
+        $instructor->apellido = $request->apellido;
+        $instructor->especialidad = $request->especialidad;
+        $instructor->biografía = $request->biografía; 
+        $instructor->save();
+
+        $instructores = DB::table('instructores')->get();
+
+        return redirect()->route('instructores.index')->with('success', 'instructor editado exitosamente.');
     }
 
     /**

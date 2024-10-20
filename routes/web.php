@@ -40,7 +40,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/instructores', [InstructorController::class, 'index'])->name('instructores.index');
     Route::post('/instructores', [InstructorController::class, 'store'])->name('instructores.store');
     Route::get('/instructores/create', [InstructorController::class, 'create'])->name('instructores.create');
-    Route::delete('/instructores/{exposicion}', [InstructorController::class, 'destroy'])->name('instructores.destroy');
+    Route::delete('/instructores/{instructor}', [InstructorController::class, 'destroy'])->name('instructores.destroy');
+    Route::put('/instructores/{instructor}', [InstructorController::class, 'update'])->name('instructores.update');
+    Route::get('/instructores/{instructor}/edit', [InstructorController::class, 'edit'])->name('instructores.edit');
 
 
     //Rutas Inscripciones
