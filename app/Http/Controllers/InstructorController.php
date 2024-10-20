@@ -22,7 +22,8 @@ class InstructorController extends Controller
      */
     public function create()
     {
-        //
+        $instructores = DB::table('instructores');
+        return view('instructor.new', ['instructores' => $instructores]);
     }
 
     /**
@@ -30,7 +31,16 @@ class InstructorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $instructor = new Instructor();   
+        $instructor->nombre = $request->nombre;
+        $instructor->apellido = $request->apellido;
+        $instructor->especialidad = $request->especialidad;
+        $instructor->biografía = $request->biografía; 
+        $instructor->save();
+
+        $instructores = DB::table('instructores')->get();
+
+        return redirect()->route('instructores.index')->with('success', 'instructor creado exitosamente.');
     }
 
     /**
@@ -62,6 +72,8 @@ class InstructorController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $instructor = Instructor::find($id);
+        $instructor->delete();
+        return redirect()->route('instructores.index')->with('success', 'instructor eliminado exitosamente.');
     }
 }

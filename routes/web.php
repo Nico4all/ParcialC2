@@ -38,10 +38,13 @@ Route::middleware('auth')->group(function () {
 
     //Rutas Instructores
     Route::get('/instructores', [InstructorController::class, 'index'])->name('instructores.index');
+    Route::post('/instructores', [InstructorController::class, 'store'])->name('instructores.store');
+    Route::get('/instructores/create', [InstructorController::class, 'create'])->name('instructores.create');
+    Route::delete('/instructores/{exposicion}', [InstructorController::class, 'destroy'])->name('instructores.destroy');
+
 
     //Rutas Inscripciones
     Route::get('/inscrpciones', [InscripcionController::class, 'index'])->name('inscripciones.index');
-
 });
 
 require __DIR__ . '/auth.php';
