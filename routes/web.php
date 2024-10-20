@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\EstudianteController;
+use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\InscripcionController;
 
 Route::get('/', function () {
@@ -34,6 +35,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/estudiantes/{estudiante}', [EstudianteController::class, 'destroy'])->name('estudiantes.destroy');
     Route::put('/estudiantes/{estudiante}', [EstudianteController::class, 'update'])->name('estudiantes.update');
     Route::get('/estudiantes/{estudiante}/edit', [EstudianteController::class, 'edit'])->name('estudiantes.edit');
+
+    //Rutas Instructores
+    Route::get('/instructores', [InstructorController::class, 'index'])->name('instructores.index');
 
     //Rutas Inscripciones
     Route::get('/inscrpciones', [InscripcionController::class, 'index'])->name('inscripciones.index');
