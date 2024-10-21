@@ -7,13 +7,13 @@
     "alpinejs": {
       "src": "../../node_modules/alpinejs/dist/module.esm.js",
       "file": "alpinejs.js",
-      "fileHash": "458a0077",
+      "fileHash": "4e76448c",
       "needsInterop": false
     },
     "axios": {
       "src": "../../node_modules/axios/index.js",
       "file": "axios.js",
-      "fileHash": "e5d5d503",
+      "fileHash": "7026b691",
       "needsInterop": false
     }
   },

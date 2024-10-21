@@ -46,7 +46,9 @@ Route::middleware('auth')->group(function () {
 
 
     //Rutas Inscripciones
-    Route::get('/inscrpciones', [InscripcionController::class, 'index'])->name('inscripciones.index');
+    Route::get('/inscripciones', [InscripcionController::class, 'index'])->name('inscripciones.index');
+    Route::post('/inscripciones', [InscripcionController::class, 'store'])->name('inscripciones.store');
+    Route::get('/inscripciones/create', [InscripcionController::class, 'create'])->name('inscripciones.create');
 });
 
 require __DIR__ . '/auth.php';
