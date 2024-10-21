@@ -32,9 +32,17 @@
                                     <td>{{ $inscripcion->estudiante_id }}</td> 
                                     <td>{{ $inscripcion->fecha_inscripción }}</td>
                                     <td>
-                                    
-                                    </form>
 
+                                        <a href="{{ route('inscripciones.edit', $inscripcion->id) }}"
+                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                            Edit </a>
+                                        <form action="{{ route('inscripciones.destroy', $inscripcion->id) }}" method="POST" style="display: inline-block">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">
+                                                Delete
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

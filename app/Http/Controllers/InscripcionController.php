@@ -31,7 +31,7 @@ class InscripcionController extends Controller
      */
     public function store(Request $request)
     {
-        $inscripcion = new inscripcion();   
+        $inscripcion = new Inscripcion();   
         $inscripcion->curso_id = $request->curso_id;
         $inscripcion->instructor_id = $request->instructor_id;
         $inscripcion->estudiante_id = $request->estudiante_id;
@@ -56,7 +56,9 @@ class InscripcionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $inscripcion = Inscripcion::find($id);
+        $inscripciones = DB::table('inscripciones')->get();
+        return view('inscripciones.edit', compact('inscripcion'));
     }
 
     /**
@@ -72,6 +74,8 @@ class InscripcionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $inscripcion = Inscripcion::find($id);
+        $inscripcion->delete();
+        return redirect()->route('inscripciones.index')->with('success', 'inscripcion eliminada exitosamente.');
     }
 }
