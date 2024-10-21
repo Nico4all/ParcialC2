@@ -58,7 +58,7 @@ class InscripcionController extends Controller
     {
         $inscripcion = Inscripcion::find($id);
         $inscripciones = DB::table('inscripciones')->get();
-        return view('inscripciones.edit', compact('inscripcion'));
+        return view('inscripcion.edit', compact('inscripcion'));
     }
 
     /**
@@ -66,7 +66,16 @@ class InscripcionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $inscripcion = Inscripcion::find($id);
+
+        $inscripcion->curso_id = $request->curso_id;
+        $inscripcion->instructor_id = $request->instructor_id;
+        $inscripcion->estudiante_id = $request->estudiante_id;
+        $inscripcion->fecha_inscripción = $request->fecha_inscripción; 
+        $inscripcion->save();
+
+        $inscripciones = DB::table('inscripciones')->get();
+        return redirect()->route('inscripciones.index')->with('success', 'inscripcion editado exitosamente.');
     }
 
     /**

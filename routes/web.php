@@ -50,8 +50,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/inscripciones', [InscripcionController::class, 'store'])->name('inscripciones.store');
     Route::get('/inscripciones/create', [InscripcionController::class, 'create'])->name('inscripciones.create');
     Route::delete('/inscripciones/{inscripcion}', [InscripcionController::class, 'destroy'])->name('inscripciones.destroy');
-    Route::put('/inscripciones/{inscripcion}', [InstructorController::class, 'update'])->name('inscripciones.update');
-    Route::get('/inscripciones/{inscripcion}/edit', [InstructorController::class, 'edit'])->name('inscripciones.edit');
+    Route::put('/inscripciones/{inscripcion}', [InscripcionController::class, 'update'])->name('inscripciones.update');
+    Route::get('/inscripciones/{inscripcion}/edit', [InscripcionController::class, 'edit'])->name('inscripciones.edit');
 });
 
 require __DIR__ . '/auth.php';
